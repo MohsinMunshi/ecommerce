@@ -23,11 +23,7 @@ export const userSlice = createSlice({
             state.userList.push(action.payload)
         },
         updateUser: (state,action) => {
-            state.userList.forEach((user) => {
-                if(user.id === action.payload.id){
-                    return action.payload
-                }
-            })
+            state.userList = state.userList.map((user) => user.id === action.payload.id ? action.payload : user)
         },
         removeUser: (state,action) => {
             state.userList = state.userList.filter((user) => user.id !== action.payload)
